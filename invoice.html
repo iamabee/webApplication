@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>invoicegenerator</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+</head>
+<body>
+    <div id="" style="box-shadow: 1px 1px 3px; padding: 25px;">
+        <nav style="padding-left: 10px;" class="navbar navbar-dark bg-dark" style="color: aliceblue;">
+            <a style="text-decoration: none; color: aliceblue; font-size: 15px;" href="website.html">←</a>
+        </nav>
+        <p style="font-size: 35px; text-align: center; padding: 15px;">INVOICE</p>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <label class="input-group-text" id="inputGroup-sizing-default" for="name">Client Name:</label>
+            </div>
+            <input class="form-control" type="text" id="name"><br>
+        </div>
+        <div class="input-group mb-3">
+            <label class="input-group-text" id="inputGroup-sizing-default" for="price">Price:</label>
+            <input class="form-control" type="number" id="price"><br>
+        </div>
+        <div class="input-group mb-3">
+            <label class="input-group-text" id="inputGroup-sizing-default" for="quantity"> Quantity:</label>
+            <input class="form-control" type="number" id="quantity"><br>
+        </div>
+        <div class="input-group mb-3">
+            <label class="input-group-text" id="inputGroup-sizing-default" for="description">Description:</label>
+            <textarea class="form-control" id="description" name="message" rows="4" required></textarea><br>
+        </div>
+        <div class="input-group mb-3">
+            <label class="input-group-text" id="inputGroup-sizing-default" for="invoiceDate">Invoice date:</label>
+            <input class="form-control" type="date" id="date"><br>
+        </div>
+        <div>
+            <button class="btn btn-secondary" style="border-radius: 0px;" onclick="myInvoice()" >Generate Invoice</button>
+        </div>
+
+        <h5 id="result"></h5>
+        <p style="margin-top: 15px;" id="display_result"></p>
+    </div>
+
+    <script>
+        const clientName = document.getElementById("name")
+        const clientPrice = document.getElementById("price")
+        const clientQuantity = document.getElementById("quantity")
+        const clientDescription = document.getElementById("description")
+        const clientDate = document.getElementById("date")
+        const Display = document.getElementById("result")
+
+
+        function myInvoice(){
+
+            //invoice ID generator
+            let invoiceName = `<strong>Invoice#:</strong> ${clientName.value}`
+            let random =  Math.floor(Math.random() * 10000);
+            let firstChar = invoiceName.toUpperCase().charAt(0)
+            let remainingChar = invoiceName.slice(1)
+            let password = `${firstChar}${remainingChar}`
+            let invoiceID = `${password}${random}`
+
+            //
+            let name = `<strong>Client Name:</strong> ${clientName.value}<br>`
+            let price = `<strong>Price:</strong> $${Number(clientPrice.value)}<br>`
+            let quantity = `<strong>Quantity:</strong> ${Number(clientQuantity.value)}<br>`
+            let description = `<strong>Description:</strong> ${clientDescription.value}<br>`
+            let date = `<strong>Date:</strong> ${clientDate.value}<br>`
+            let grandTotal = `<strong>SumTotal:</strong> $${clientPrice.value * clientQuantity.value}<br>`
+            let generatedInvoice = ` ${name} ${price} ${quantity} ${description} ${grandTotal} ${date} `
+
+            //Displaying the invoice
+            Display.innerHTML = `${invoiceID}<br> <br>${generatedInvoice}`
+
+            //clearing the form
+            clientDate.value = ''
+            clientDescription.value = ''
+            clientName.value = ''
+            clientPrice.value = ''
+            clientQuantity.value =''
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operations</title>
+    <link rel="stylesheet" href="operations.css">
+</head>
+<body>
+    <div class="container">
+        <div>
+            <label for="first">First Number:</label><br>
+            <input type="number" id="first" placeholder="Enter Number"  required>
+        </div> <br>
+
+        <div>
+            <label for="second">Second Number:</label><br>
+            <input type="number" id="second" placeholder="Enter Number" required>
+        </div> <br>
+
+        <div>
+            <label for="operation">Operation:</label><br>
+            <select style="background-color: #0e3c55; color: white; padding: 5px;" id="operation">
+                <option value="" selected disabled>Select an Operation</option>
+                <option value="+">Addition</option>
+                <option value="-">Subtraction</option>
+                <option value="*">Multiplication</option>
+                <option value="/">Division</option>
+                <option value="%">Modulus</option>
+                <option value="mean">Mean</option>
+                <option value="pythagoras">Pythagoras</option>
+                <option value="square">Square</option>
+                <option value="rectangle">Rectangle</option>
+                <option value="triangle">Triangle</option>
+            </select> 
+        </div> <br>
+
+        <div>
+            <button style="background-color: blue; color: white; padding: 5px; border-radius: 8px;" onclick="calculation()">Calculate</button>
+        </div> <br>
+
+        <div>
+            <h3 id="result"></h3>
+        </div>
+        <h2>
+            <a href="website.html"><button>Back To Dashboard</button></a>
+        </h2>
+    </div>
+
+    <script>
+        const input1 = document.getElementById("first")
+        const input2 = document.getElementById("second")
+        const Operation = document.getElementById("operation")
+        const Display = document.getElementById("result")
+
+
+        function calculation(){
+            let result = ''
+            let operation = Operation.value
+            //.toLowerCase();
+            //let operation = Operation.toLowercase();
+            let first = Number(input1.value)
+            let second = Number(input2.value)
+            
+            let add = first + second
+            let calMean = add/2;
+            
+            let aSquared = first * first
+            let bSquared = second * second
+            let sumOfSquares = aSquared + bSquared
+            let pythagoras = Math.sqrt(sumOfSquares);
+
+
+            if(operation === '+'){
+                answer = first + second
+            }
+            else if(operation === '-'){
+                answer = first - second
+            }
+            else if(operation === '*'){
+                answer = first * second
+            }
+            else if(operation === '/'){
+                answer = first / second
+            }
+            else if(operation === '%'){
+                answer = first % second
+            }
+            else if(operation === 'square'){
+                answer = first * second
+            }
+            else if(operation === 'rectangle'){
+                answer = first * second
+            }
+            else if(operation === 'triangle'){
+                answer = (1/2)*(first * second)
+            }
+            else if(operation === 'pythagoras'){
+                answer = pythagoras
+            }
+            else if(operation === 'mean'){
+                answer = calMean
+            }
+            else{
+                answer = 'Please enter an Operation:'
+            }
+
+            Display.innerHTML = `${answer.toFixed(2)}`
+        }
+    </script>
+
+<!-- LIGHT OFF -->
+
+<div class="light">
+    <div style="padding-left: 500px; padding-top: 150px;">    
+        <button style="background-color: black; color: white; border-radius: 300px;" onclick="turnOn()">Turn On</button>
+        <img src="images/pic_bulboff.gif" alt="Off" id="hey">
+        <button style="background-color: white; color: black; border-radius: 300px;" onclick=" turnOff()">Turn Off</button>
+    </div>
+    <div>
+        <h2 id="result" style=" color: blue; padding-left: 550px; padding-top: 50px;"></h2>
+    </div>
+</div>
+
+   <script>
+    const Display2 = document.getElementById("result")
+    const imgOn = document.getElementById("hey")
+    const imgOff = document.getElementById("hey")
+    let offButton = "images/pic_bulboff.gif"
+    let onButton = "images/pic_bulbon.gif"
+
+    //function to turn ON the bulb
+        function turnOn(){
+            imgOn.src = onButton 
+            Display2.innerHTML = 'Hello There'
+
+        }
+        //function to turn OFF the bulb
+        function turnOff(){
+            imgOff.src = offButton 
+            Display2.innerHTML = 'Hi There' 
+        }
+
+   </script>
+</body>
+</html>

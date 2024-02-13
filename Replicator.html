@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Replecate</title>
+    <link rel="stylesheet" href="Replicator.css">
+</head>
+<body>
+    <div id="container">
+        <h1>Text Replicator</h1>
+        <div>
+            <label for="text">Enter Text:</label><br>
+            <input type="text" placeholder="Enter Text" id="text">
+        </div>
+        <div>
+            <label for="number">Enter Number:</label><br>
+            <input type="number" placeholder="Enter Number" id="number">
+        </div>
+        <div>
+            <button onclick="replicate()">Replicate</button>
+        </div>
+        <h4 id="replicator"></h4>
+        <h2>
+            <a href="website.html"><button>Back To Dashboard</button></a>
+        </h2>
+    </div>
+
+    <script>
+        const input1 = document.getElementById("text")
+        const input2 = document.getElementById("number")
+        const Display = document.getElementById('replicator')
+
+
+
+        function replicate(){
+            let entry = `${input1.value}<br>`;
+            let myText = entry.toUpperCase()
+            let myNumber = Number(input2.value)
+            let Replicate = myText.repeat(myNumber)
+
+            Display.innerHTML = `${Replicate} `
+            input1.value = ''
+            input2.value = ''
+        }
+    </script>
+</body>
+</html>

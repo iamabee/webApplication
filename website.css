@@ -1,0 +1,21 @@
+body {
+    text-align: center;
+    padding-top: 10%;
+}
+header {
+    color: #e6962d;
+    text-align: center;
+}
+button {
+    width: 22%;
+    background-color: #3300ff;
+    border: none;
+    color: white;
+    margin-top: 10px;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+button:hover{
+    background-color: #3d3b45;
+}
